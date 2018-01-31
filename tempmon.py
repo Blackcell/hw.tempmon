@@ -52,7 +52,11 @@ def main():
         #print("TEMP_F")
         #print(temp_f)
 
-        store(temp_c, temp_f)
+        try:
+            store(temp_c, temp_f)
+        except Exception as e:
+            print('Unable to store value. Possible network issue.)
+
         time.sleep(60)
 
 
