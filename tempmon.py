@@ -17,6 +17,7 @@ API_SECRET = cfg.api['api_secret']
 API_URL_STORE = cfg.api['url_store']
 API_URL_NAME = cfg.api['url_name']
 LOCATION_ID = cfg.api['location_id']
+OFFSET_C = cfg.device['offset_c']
 
 DEVICE_FOLDER = "/sys/bus/w1/devices/"
 DEVICE_SUFFIX = "/w1_slave"
@@ -44,7 +45,7 @@ def main():
     device = guess_temperature_sensor();
 
     while 1 < 2:
-        temp_c = read_temperature_c(device)
+        temp_c = read_temperature_c(device) + OFFSET_C
         #print('#############################')
         #print("TEMP_C")
         #print(temp_c)
