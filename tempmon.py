@@ -11,7 +11,7 @@ import requests
 import socket
 import time
 
-TEMPMON_VERSION = 1.0
+TEMPMON_VERSION = 1.1
 
 API_SECRET = cfg.api['api_secret']
 API_URL_STORE = cfg.api['url_store']
