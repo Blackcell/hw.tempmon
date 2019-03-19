@@ -3,6 +3,7 @@ Thanks to this project for base methods to read the temperature
 https://github.com/timfernando/temperature-serve-pi/blob/master/temperature.py
 """
 
+from gpiozero import LED
 from os import listdir, system
 import sys
 import json
@@ -18,6 +19,9 @@ API_URL_STORE = cfg.api['url_store']
 API_URL_NAME = cfg.api['url_name']
 LOCATION_ID = cfg.api['location_id']
 OFFSET_C = cfg.device['offset_c']
+CONTROL_PIN = cfg.device['control_pin']
+MAX_F = cfg.tolerance['max_f']
+MIN_F = cfg.tolerance['min_f']
 
 DEVICE_FOLDER = "/sys/bus/w1/devices/"
 DEVICE_SUFFIX = "/w1_slave"
@@ -42,6 +46,8 @@ def main():
     #print(location_name + '\n')
     #print('#############################')
 
+    led = LED(CONTROL_PIN)
+    led.off()
     device = guess_temperature_sensor();
 
     while 1 < 2:
@@ -52,6 +58,12 @@ def main():
         temp_f = round((temp_c * 1.8) + 32.0, 1)
         #print("TEMP_F")
         #print(temp_f)
+
+        if temp_f > MAX:
+            led.on()
+
+        if temp_f < MIN:
+            led.off()
 
         try:
             store(temp_c, temp_f)
