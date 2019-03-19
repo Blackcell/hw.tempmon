@@ -59,10 +59,10 @@ def main():
         #print("TEMP_F")
         #print(temp_f)
 
-        if temp_f > MAX:
+        if temp_f > MAX_F:
             led.on()
 
-        if temp_f < MIN:
+        if temp_f < MIN_F:
             led.off()
 
         try:
