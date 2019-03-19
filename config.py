@@ -4,7 +4,8 @@ api = {'location_id': '',
          'api_secret': ''}
 device = {
         'offset_c': 0,
-        'control_pin': 21
+        'control_pin': 21,
+        'interval': 60
 }
 tolerance = {
         'max_f': 72,

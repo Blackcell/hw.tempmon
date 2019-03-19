@@ -20,6 +20,7 @@ API_URL_NAME = cfg.api['url_name']
 LOCATION_ID = cfg.api['location_id']
 OFFSET_C = cfg.device['offset_c']
 CONTROL_PIN = cfg.device['control_pin']
+INTERVAL = cfg.device['interval']
 MAX_F = cfg.tolerance['max_f']
 MIN_F = cfg.tolerance['min_f']
 
@@ -70,7 +71,7 @@ def main():
         except Exception as e:
             print('Unable to store value. Possible network issue.')
 
-        time.sleep(60)
+        time.sleep(INTERVAL)
 
 
 def get_location_name():
